@@ -1,23 +1,31 @@
-package com.example.bautista.appestudio;
+package com.example.bautista.appestudio.fragments;
 
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.bautista.appestudio.R;
+import com.example.bautista.appestudio.adaptadores.AdaptadorPersonal;
+import com.example.bautista.appestudio.adaptadores.persona;
+
+import java.util.ArrayList;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link recyclerView.OnFragmentInteractionListener} interface
+ * {@link recyclerPersonalizado.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link recyclerView#newInstance} factory method to
+ * Use the {@link recyclerPersonalizado#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class recyclerView extends Fragment {
+public class recyclerPersonalizado extends Fragment  {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -26,10 +34,11 @@ public class recyclerView extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    View view;
 
     private OnFragmentInteractionListener mListener;
 
-    public recyclerView() {
+    public recyclerPersonalizado() {
         // Required empty public constructor
     }
 
@@ -39,11 +48,11 @@ public class recyclerView extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment recyclerView.
+     * @return A new instance of fragment recyclerPersonalizado.
      */
     // TODO: Rename and change types and number of parameters
-    public static recyclerView newInstance(String param1, String param2) {
-        recyclerView fragment = new recyclerView();
+    public static recyclerPersonalizado newInstance(String param1, String param2) {
+        recyclerPersonalizado fragment = new recyclerPersonalizado();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -60,11 +69,33 @@ public class recyclerView extends Fragment {
         }
     }
 
+    ArrayList<persona> listarPersona;
+    RecyclerView recyclerView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recycler_view, container, false);
+        view=inflater.inflate(R.layout.fragment_recycler_personalizado, container, false);
+        listarPersona= new ArrayList<>();
+        recyclerView=(RecyclerView)view.findViewById(R.id.recyclerPi);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        llenarPersonajes();
+        AdaptadorPersonal adaptadorPersonal = new AdaptadorPersonal(listarPersona);
+        recyclerView.setAdapter(adaptadorPersonal);
+        return view;
+    }
+
+    private void llenarPersonajes() {
+        listarPersona.add(new persona("John", "Bautista",R.mipmap.ic_launcher));
+        listarPersona.add(new persona("John", "Bautista",R.mipmap.ic_launcher));
+        listarPersona.add(new persona("John", "Bautista",R.mipmap.ic_launcher));
+        listarPersona.add(new persona("John", "Bautista",R.mipmap.ic_launcher));
+        listarPersona.add(new persona("John", "Bautista",R.mipmap.ic_launcher));
+        listarPersona.add(new persona("John", "Bautista",R.mipmap.ic_launcher));
+        listarPersona.add(new persona("John", "Bautista",R.mipmap.ic_launcher));
+        listarPersona.add(new persona("John", "Bautista",R.mipmap.ic_launcher));
+
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event

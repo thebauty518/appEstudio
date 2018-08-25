@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Menu_Principal"
+    android:id="@+id/content_menu"
     tools:showIn="@layout/app_bar_menu__principal">
 
 </android.support.constraint.ConstraintLayout>
